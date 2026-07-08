@@ -1,0 +1,205 @@
+.app-button.p-button,
+.app-icon-button.p-button,
+.app-split-button .p-button {
+  font-weight: 700;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.app-button.p-button {
+  min-height: 44px;
+  padding: 0.72rem 1.15rem;
+  border-radius: 999px;
+  gap: 0.55rem;
+  box-shadow: 0 10px 24px rgba(25, 118, 210, 0.16);
+}
+
+.app-button.p-button:hover {
+  transform: translateY(-1px);
+}
+
+.app-button.p-button:enabled:active {
+  transform: translateY(0);
+}
+
+.app-button.p-button:not(.p-button-text):not(.p-button-outlined):not(.p-button-secondary):not(.p-button-success):not(.p-button-info):not(.p-button-warning):not(.p-button-help):not(.p-button-danger):not(.p-button-contrast) {
+  background: linear-gradient(135deg, #2f80ed 0%, #4a8ff5 100%);
+  border-color: #2f80ed;
+}
+
+.app-button.p-button.p-button-outlined {
+  background: #fff;
+  border-width: 1.5px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+.app-button.p-button.p-button-text {
+  box-shadow: none;
+}
+
+.app-button.p-button .p-button-label {
+  font-weight: 700;
+}
+
+.app-button--icon-bubble.p-button .p-button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 999px;
+  margin-top: -0.1rem;
+  margin-bottom: -0.1rem;
+}
+
+.app-button.p-button:not(.p-button-outlined):not(.p-button-text).app-button--icon-bubble .p-button-icon {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.app-button.p-button.p-button-outlined.app-button--icon-bubble .p-button-icon,
+.app-button.p-button.p-button-text.app-button--icon-bubble .p-button-icon {
+  background: rgba(47, 128, 237, 0.1);
+}
+
+/* Baixar em lote (grid parcelas): verde mais escuro que o success padrão do tema */
+.app-button.p-button.p-button-outlined.p-button-success.app-button--batch-settle {
+  border-color: #047857;
+  color: #047857;
+}
+
+.app-button.p-button.p-button-outlined.p-button-success.app-button--batch-settle .p-button-icon {
+  color: #047857;
+}
+
+.app-button.p-button.p-button-outlined.p-button-success.app-button--batch-settle:enabled:hover {
+  background: rgba(4, 120, 87, 0.1);
+  border-color: #065f46;
+  color: #065f46;
+}
+
+.app-button.p-button.p-button-outlined.p-button-success.app-button--batch-settle:enabled:hover .p-button-icon {
+  color: #065f46;
+}
+
+.app-button.p-button.p-button-outlined.p-button-success.app-button--batch-settle.app-button--icon-bubble .p-button-icon {
+  background: rgba(4, 120, 87, 0.14);
+}
+
+.app-button--standard.p-button {
+  border-radius: 14px;
+}
+
+.app-button.p-button .p-badge {
+  margin-left: 0.25rem;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  line-height: 1.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.app-icon-button.p-button {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #fff;
+  color: var(--app-primary);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.app-icon-button.p-button:hover {
+  transform: translateY(-1px);
+  background: #f8fbff;
+  border-color: rgba(47, 128, 237, 0.2);
+}
+
+.app-icon-button.p-button .p-button-icon {
+  font-size: 0.95rem;
+  color: currentColor;
+}
+
+.app-icon-button.p-button.p-button-danger {
+  background: #fff5f5;
+  border-color: rgba(220, 38, 38, 0.14);
+}
+
+.app-icon-button.p-button.p-button-danger .p-button-icon {
+  color: #dc2626;
+}
+
+.app-split-button .p-button {
+  min-height: 38px;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+}
+
+.app-split-button.p-splitbutton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.app-split-button .p-button .p-button-label,
+.app-split-button--compact .p-button .p-button-label {
+  font-size: 0.88rem;
+}
+
+.app-split-button .p-button .p-button-icon,
+.app-split-button--compact .p-button .p-button-icon {
+  font-size: 0.85rem;
+}
+
+.app-split-button .p-splitbutton-defaultbutton,
+.app-split-button--compact .p-splitbutton-defaultbutton {
+  padding-right: 0.75rem;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+}
+
+.app-split-button .p-splitbutton-menubutton,
+.app-split-button--compact .p-splitbutton-menubutton {
+  width: 2.4rem;
+  padding-inline: 0;
+  flex: 0 0 2.4rem;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+  margin-left: 0;
+}
+
+.app-split-button .p-splitbutton-defaultbutton,
+.app-split-button .p-splitbutton-menubutton,
+.app-split-button--compact .p-splitbutton-defaultbutton,
+.app-split-button--compact .p-splitbutton-menubutton {
+  border-width: 1.5px;
+}
+
+.app-row-actions,
+.app-row-actions__single {
+  white-space: nowrap;
+}
+
+/* Menu do split "Carregar categoria na fila" (overlay portaled) */
+.promo-category-split-queue-menu.p-menu.p-component {
+  min-width: min(22rem, calc(100vw - 2rem));
+  border-radius: 14px;
+  padding: 6px 0;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.14);
+}
+
+.promo-category-split-queue-menu .p-menuitem-content {
+  border-radius: 10px;
+  margin-inline: 6px;
+}
+
+.promo-category-split-queue-menu .p-menuitem-link {
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.65rem 0.75rem;
+}
+
+.promo-category-split-queue-menu .p-menuitem-text {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}

@@ -1,0 +1,715 @@
+.app-form-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--app-form-grid-columns, 12), minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.app-form-grid__item {
+  grid-column: span var(--app-form-grid-span, 12);
+  min-width: 0;
+}
+
+.app-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.app-form-field__label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--app-text-color);
+}
+
+.app-form-field__required {
+  color: #d32f2f;
+  margin-left: 0.2rem;
+}
+
+.app-form-field__message {
+  min-height: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--app-text-muted);
+}
+
+.app-form-field__message.is-error {
+  color: #d32f2f;
+}
+
+.app-form-control {
+  width: 100%;
+}
+
+.app-form-control-float-label {
+  width: 100%;
+  min-width: 0;
+}
+
+.app-form-control-float-label .p-float-label {
+  width: 100%;
+}
+
+/*
+ * NFe (empresa): espaço entre linhas vem do gap do Stack no TSX.
+ * Não usar padding-top no .p-float-label — isso empurra o texto do input para baixo.
+ * Centralizar verticalmente valores no InputNumber/Dropdown como no restante do formulário.
+ */
+.app-form-nfe-float-stack .p-inputnumber.p-component {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+}
+
+.app-form-nfe-float-stack .p-inputnumber .p-inputnumber-input {
+  height: 42px;
+  min-height: 42px;
+  line-height: 42px;
+  padding-block: 0;
+  padding-inline: 0.75rem;
+  box-sizing: border-box;
+}
+
+.app-form-nfe-float-stack .p-dropdown.p-component {
+  display: inline-flex;
+  width: 100%;
+  min-height: 42px;
+  align-items: center;
+}
+
+.app-form-nfe-float-stack .p-dropdown .p-dropdown-label {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  line-height: 1.25;
+  padding-block: 0;
+}
+
+.app-form-nfe-float-stack .p-dropdown .p-dropdown-trigger {
+  display: flex;
+  align-items: center;
+}
+
+.app-form-control-float-label .p-inputtextarea {
+  width: 100%;
+}
+
+/* Textarea em linha com dropdowns/inputs (~42px), igual ao restante da grade. */
+.app-form-control-float-label--match-input-row .app-form-control.p-inputtextarea {
+  min-height: 42px;
+  height: 42px;
+  max-height: 42px;
+  resize: none;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.app-form-control .p-inputtext,
+.app-form-control.p-inputtext,
+.app-form-control .p-dropdown,
+.app-form-control .p-autocomplete,
+.app-form-control .p-calendar,
+.app-form-control .p-inputnumber {
+  width: 100%;
+}
+
+/*
+ * Dropdown (.app-form-control): Prime usa inline-flex no root; com valueTemplate ou rótulo longo
+ * o controle cresce além da coluna. display:flex + min-width:0 repete a largura do pai; ellipsis do Prime no label funciona.
+ */
+.app-form-control.p-dropdown.p-component {
+  display: flex;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.app-form-control.p-dropdown .p-dropdown-label {
+  min-width: 0;
+}
+
+/* valueTemplate costuma ser um único wrapper (flex/grid) — precisa poder encolher */
+.app-form-control.p-dropdown .p-dropdown-label > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Filhos comuns em templates (código fixo + nome longo) */
+.app-form-control.p-dropdown .p-dropdown-label span {
+  min-width: 0;
+}
+
+.app-form-control.p-multiselect.p-component {
+  display: flex;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.app-form-control.p-multiselect .p-multiselect-label-container {
+  min-width: 0;
+}
+
+.app-form-control .p-inputtext,
+.app-form-control.p-inputtext,
+.app-form-control .p-dropdown,
+.app-form-control .p-inputnumber-input,
+.app-form-control .p-calendar .p-inputtext,
+.app-form-control .p-autocomplete .p-inputtext,
+.app-form-control .p-inputtextarea {
+  border-radius: 12px;
+  min-height: 42px;
+}
+
+.app-form-control .p-inputtextarea {
+  min-height: 104px;
+  resize: vertical;
+}
+
+.app-form-control.is-invalid .p-inputtext,
+.app-form-control.is-invalid.p-inputtext,
+.app-form-control.is-invalid .p-dropdown,
+.app-form-control.is-invalid .p-inputnumber-input,
+.app-form-control.is-invalid.p-calendar > .p-inputtext,
+.app-form-control.is-invalid .p-calendar .p-inputtext,
+.app-form-control.is-invalid .p-autocomplete .p-inputtext,
+.app-form-control.is-invalid .p-inputtextarea {
+  border-color: #d32f2f;
+}
+
+.app-form-control.is-invalid.p-calendar > .p-datepicker-trigger.p-button {
+  border-color: #d32f2f;
+}
+
+/*
+ * Calendar (AppDatePicker): campo + botão do calendário como input group contínuo.
+ * O radius global (12px) em .p-inputtext anulava os cantos retos no encontro com o botão;
+ * o tema Lara aplica radius/padding grandes no .p-button, gerando “gap” visual.
+ */
+.app-form-control.p-calendar.p-component,
+.app-form-control .p-calendar.p-component {
+  display: inline-flex;
+  width: 100%;
+  max-width: 100%;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.app-form-control.p-calendar .p-inputtext,
+.app-form-control .p-calendar .p-inputtext {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.app-form-control.p-calendar.p-calendar-w-btn-right > .p-inputtext,
+.app-form-control .p-calendar.p-calendar-w-btn-right > .p-inputtext {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.app-form-control.p-calendar.p-calendar-w-btn-right > .p-datepicker-trigger.p-button,
+.app-form-control .p-calendar.p-calendar-w-btn-right > .p-datepicker-trigger.p-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  margin: 0;
+  margin-left: -1px;
+  padding: 0;
+  width: 2.625rem;
+  min-width: 2.625rem;
+  min-height: 42px;
+  height: auto;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.app-form-control.p-calendar.p-calendar-w-btn-right > .p-datepicker-trigger.p-button .p-button-icon,
+.app-form-control .p-calendar.p-calendar-w-btn-right > .p-datepicker-trigger.p-button .p-button-icon {
+  margin: 0;
+}
+
+.app-form-control.p-calendar.p-calendar-w-btn-left > .p-inputtext,
+.app-form-control .p-calendar.p-calendar-w-btn-left > .p-inputtext {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.app-form-control.p-calendar.p-calendar-w-btn-left > .p-datepicker-trigger.p-button,
+.app-form-control .p-calendar.p-calendar-w-btn-left > .p-datepicker-trigger.p-button {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  margin: 0;
+  margin-right: -1px;
+  padding: 0;
+  width: 2.625rem;
+  min-width: 2.625rem;
+  min-height: 42px;
+  height: auto;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.app-form-control.p-calendar.p-calendar-w-btn-left > .p-datepicker-trigger.p-button .p-button-icon,
+.app-form-control .p-calendar.p-calendar-w-btn-left > .p-datepicker-trigger.p-button .p-button-icon {
+  margin: 0;
+}
+
+.app-form-control--grid-compact .p-inputnumber-input {
+  min-height: 40px;
+  height: 40px;
+  padding-block: 0.45rem;
+}
+
+.app-form-control--grid-readonly .p-inputnumber-input {
+  background-color: #f5f5f5;
+}
+
+.app-paginated-entity-select-root {
+  width: 100%;
+  min-width: 0;
+}
+
+/* appendTo="self": overlay no mesmo subtree do trigger (evita painel em 0,0 com portal + layout). */
+.app-paginated-entity-select-root .p-dropdown {
+  width: 100%;
+  position: relative;
+}
+
+.app-paginated-entity-select-root .p-dropdown-panel {
+  width: 100%;
+  min-width: 0;
+  left: 0;
+}
+
+.app-paginated-entity-select-panel .p-dropdown-item {
+  overflow: hidden;
+}
+
+.app-paginated-entity-select__item-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.app-paginated-entity-select__loading-more {
+  padding: 0.55rem 0.75rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--app-text-muted, #64748b);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+/* Listas longas (ex.: CST ICMS): uma linha + ellipsis; texto completo no title. Compatível com VirtualScroller (itemSize fixo). */
+.app-select-cst-item {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.35;
+  max-width: 100%;
+}
+
+.app-select-cst-item__code {
+  font-weight: 600;
+}
+
+.app-form-control .p-dropdown-label .app-select-cst-item--value {
+  min-width: 0;
+}
+
+.app-form-control__quick-create {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+  padding: 0.55rem 0.7rem 0.7rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.96));
+  backdrop-filter: blur(4px);
+}
+
+.app-form-control__quick-create-hint {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.01em;
+}
+
+.app-form-control__quick-create .p-button {
+  justify-content: flex-start;
+  width: 100%;
+  padding-inline: 0.7rem;
+  border-radius: 10px;
+}
+
+.app-form-select-panel .p-dropdown-footer {
+  padding: 0;
+  border-top: none;
+  background: transparent;
+}
+
+.app-form-select-panel {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.app-form-select-panel--soft-loading {
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+.app-form-select-panel--soft-loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -35%;
+  width: 35%;
+  height: 3px;
+  z-index: 2;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(25, 118, 210, 0), rgba(25, 118, 210, 0.9), rgba(25, 118, 210, 0));
+  animation: app-form-select-panel-loading 1.1s ease-in-out infinite;
+}
+
+.app-form-select-panel--soft-loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+.app-form-select-panel--soft-loading .p-dropdown-items-wrapper,
+.app-form-select-panel--soft-loading .p-dropdown-header {
+  position: relative;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.app-form-select-panel--soft-loading .p-dropdown-items-wrapper {
+  opacity: 0.88;
+  filter: saturate(0.92);
+}
+
+/* Usado em dropdowns dentro de dialogs/frames para garantir que o painel fique acima. */
+.app-title-form-select-panel--stack-top.p-dropdown-panel {
+  z-index: 160000 !important;
+}
+
+@keyframes app-form-select-panel-loading {
+  from {
+    left: -35%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+.app-form-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 42px;
+}
+
+.app-form-check__label {
+  font-size: 0.92rem;
+  color: var(--app-text-color);
+}
+
+.app-form-layout__tabs .p-tabview-nav {
+  gap: 0.35rem;
+}
+
+.app-form-layout__tabs .p-tabview-nav-link {
+  border-radius: 12px 12px 0 0;
+}
+
+/* Itens: formulário mais compacto — evita rolagem vertical desnecessária no painel da aba */
+.app-form-layout__tabs--item-editor .p-tabview-panels {
+  overflow: visible;
+  max-height: none;
+}
+
+.app-form-layout__tabs--item-editor .p-tabview-panel {
+  overflow: visible;
+}
+
+.app-form-layout__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.app-form-layout__stack--compact {
+  gap: 1rem;
+}
+
+/* Várias linhas de grid dentro da mesma seção (ex.: dados básicos em contas a pagar/receber). */
+.app-form-layout__row-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.app-form-layout__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.app-form-layout__grid--cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.app-form-layout__grid--cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.app-form-layout__grid--cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.app-form-layout__grid--align-start {
+  align-items: start;
+}
+
+.app-form-layout__grid--cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.app-form-layout__grid--freight {
+  grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+}
+
+.app-form-layout__grid-span-full {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.app-form-layout__grid-span-2 {
+  grid-column: span 2;
+  min-width: 0;
+}
+
+.app-form-layout__metric,
+.app-form-layout__info-card,
+.app-form-layout__meta-card,
+.app-form-layout__installment-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(248, 250, 252, 0.9);
+}
+
+.app-form-layout__metric-label,
+.app-form-layout__info-label,
+.app-form-layout__meta-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--app-text-muted);
+}
+
+.app-form-layout__metric-value,
+.app-form-layout__info-value,
+.app-form-layout__meta-value {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--app-text-color);
+  word-break: break-word;
+}
+
+.app-form-layout__metric-value--primary,
+.app-form-layout__info-value--primary {
+  color: var(--app-primary);
+}
+
+.app-form-layout__metric-tag {
+  display: flex;
+  align-items: center;
+  min-height: 2rem;
+}
+
+.app-form-layout__metric--inline-status {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.app-form-layout__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--app-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.app-form-layout__link:hover {
+  text-decoration: underline;
+}
+
+.app-form-layout__link--inline {
+  margin-top: 0.5rem;
+}
+
+.app-form-layout__subheader {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--app-text-color);
+}
+
+.app-form-layout__installment-card {
+  gap: 0.75rem;
+}
+
+.app-installment-due-schedule {
+  max-width: 36rem;
+}
+
+.app-installment-due-schedule__modes {
+  align-self: flex-start;
+}
+
+.app-installment-due-schedule__modes .MuiToggleButton-root {
+  border-color: rgba(15, 23, 42, 0.12);
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: none;
+  padding: 0.35rem 0.85rem;
+}
+
+.app-installment-due-schedule__modes .MuiToggleButton-root.Mui-selected {
+  background: rgba(25, 118, 210, 0.1);
+  color: var(--app-primary);
+  border-color: rgba(25, 118, 210, 0.28);
+}
+
+.app-installment-due-schedule__modes .MuiToggleButton-root.Mui-selected:hover {
+  background: rgba(25, 118, 210, 0.16);
+}
+
+.app-form-layout__installment-top,
+.app-form-layout__installment-meta,
+.app-form-layout__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.app-form-layout__installment-top,
+.app-form-layout__actions {
+  justify-content: flex-start;
+}
+
+.app-form-layout__installment-top {
+  justify-content: space-between;
+}
+
+.app-form-layout__installment-meta {
+  color: var(--app-text-muted);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 960px) {
+  .app-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-form-grid__item {
+    grid-column: span 1;
+  }
+
+  .app-form-layout__grid,
+  .app-form-layout__grid--cols-2,
+  .app-form-layout__grid--cols-3,
+  .app-form-layout__grid--cols-4,
+  .app-form-layout__grid--cols-5,
+  .app-form-layout__grid--freight {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1280px) {
+  .app-form-layout__grid--cols-5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Combo Banco (filtros): logo + nome — altura alinhada ao Dropdown */
+.app-bank-select-option {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.app-bank-select-option__logo {
+  width: 1.375rem;
+  height: 1.375rem;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-sizing: border-box;
+}
+
+.app-bank-select-option__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  color: rgba(15, 23, 42, 0.4);
+  font-size: 0.75rem;
+}
+
+.app-bank-select-option__label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-bank-select .p-dropdown-label {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.app-bank-select .p-dropdown-label .app-bank-select-option {
+  padding: 0;
+}

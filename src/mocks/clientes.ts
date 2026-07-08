@@ -1,0 +1,98 @@
+import type { Cliente } from '../types/cotacao';
+
+export const MOCK_CLIENTES: Cliente[] = [
+  {
+    id: 1,
+    nome: 'Construtora Horizonte',
+    cnpj: '12345678000190',
+    contato: 'Carlos Mendes',
+    email: 'carlos.mendes@horizonte.com.br',
+    cidade: 'São Paulo',
+    estado: 'SP',
+  },
+  {
+    id: 2,
+    nome: 'Grupo Delta Engenharia',
+    cnpj: '23456789000181',
+    contato: 'Fernanda Rocha',
+    email: 'fernanda.rocha@deltaeng.com.br',
+    cidade: 'Campinas',
+    estado: 'SP',
+  },
+  {
+    id: 3,
+    nome: 'Hospital São Lucas',
+    cnpj: '34567890000172',
+    contato: 'Dr. Ricardo Alves',
+    email: 'ricardo.alves@saolucas.org.br',
+    cidade: 'Rio de Janeiro',
+    estado: 'RJ',
+  },
+  {
+    id: 4,
+    nome: 'Shopping Prime',
+    cnpj: '45678901000163',
+    contato: 'Juliana Costa',
+    email: 'juliana.costa@shoppingprime.com.br',
+    cidade: 'Belo Horizonte',
+    estado: 'MG',
+  },
+  {
+    id: 5,
+    nome: 'MR Engenharia',
+    cnpj: '56789012000154',
+    contato: 'Marcos Pereira',
+    email: 'marcos.pereira@mreng.com.br',
+    cidade: 'Curitiba',
+    estado: 'PR',
+  },
+  {
+    id: 6,
+    nome: 'ABC Industrial',
+    cnpj: '67890123000145',
+    contato: 'Patrícia Lima',
+    email: 'patricia.lima@abcindustrial.com.br',
+    cidade: 'Porto Alegre',
+    estado: 'RS',
+  },
+  {
+    id: 7,
+    nome: 'Incorporadora Vista Mar',
+    cnpj: '78901234000136',
+    contato: 'Eduardo Santos',
+    email: 'eduardo.santos@vistamar.com.br',
+    cidade: 'Florianópolis',
+    estado: 'SC',
+  },
+  {
+    id: 8,
+    nome: 'Rede Hoteleira Atlântica',
+    cnpj: '89012345000127',
+    contato: 'Amanda Ferreira',
+    email: 'amanda.ferreira@atlantica.com.br',
+    cidade: 'Salvador',
+    estado: 'BA',
+  },
+  {
+    id: 9,
+    nome: 'Indústria Metalúrgica Norte',
+    cnpj: '90123456000118',
+    contato: 'Roberto Nunes',
+    email: 'roberto.nunes@metalnorte.com.br',
+    cidade: 'Manaus',
+    estado: 'AM',
+  },
+  {
+    id: 10,
+    nome: 'Condomínio Residencial Aurora',
+    cnpj: '01234567000109',
+    contato: 'Sílvia Martins',
+    email: 'silvia.martins@aurora.com.br',
+    cidade: 'Goiânia',
+    estado: 'GO',
+  },
+];
+
+export function getClienteById(id: number): Cliente | undefined {
+  return MOCK_CLIENTES.find((c) => c.id === id);
+}

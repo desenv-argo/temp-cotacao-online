@@ -1,0 +1,157 @@
+/* Acima de modais MUI e do mask de baixa (.settlement-form-dialog-mask--stack-top). */
+.app-confirm-dialog-mask--stack-top.p-dialog-mask {
+  z-index: 151000 !important;
+}
+
+.app-toast.p-toast {
+  opacity: 0.98;
+}
+
+.app-toast .p-toast-message {
+  border-radius: 14px;
+}
+
+/* Mensagens longas / várias linhas (ex.: erros da API em lançamentos de fatura) */
+.app-toast .p-toast-detail {
+  white-space: pre-line;
+  max-width: min(92vw, 40rem);
+  line-height: 1.5;
+}
+
+.app-confirm-dialog .p-dialog-header,
+.app-confirm-dialog .p-dialog-content,
+.app-confirm-dialog .p-dialog-footer {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.app-confirm-dialog .p-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.app-confirm-dialog__message {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.app-confirm-dialog__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(25, 118, 210, 0.12);
+  color: var(--app-primary);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.app-confirm-dialog__icon--warning {
+  background: rgba(237, 108, 2, 0.14);
+  color: #ed6c02;
+}
+
+.app-confirm-dialog__icon--danger {
+  background: rgba(211, 47, 47, 0.14);
+  color: #d32f2f;
+}
+
+.app-confirm-dialog__icon--info {
+  background: rgba(25, 118, 210, 0.14);
+  color: #1976d2;
+}
+
+.app-confirm-dialog__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--app-text-color);
+}
+
+.app-confirm-dialog__text {
+  margin: 0.5rem 0 0;
+  color: var(--app-text-muted);
+  line-height: 1.55;
+}
+
+.app-loader {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.app-loader__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.54);
+  backdrop-filter: blur(4px);
+}
+
+.app-loader__panel {
+  min-width: 280px;
+  max-width: 420px;
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--app-shadow-md);
+  text-align: center;
+}
+
+.app-loader__title {
+  margin: 1rem 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--app-text-color);
+}
+
+.app-loader__subtitle {
+  margin: 0;
+  color: var(--app-text-muted);
+}
+
+.app-empty-state {
+  border: 2px dashed rgba(15, 23, 42, 0.1);
+  border-radius: 20px;
+  background: #f8fbff;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.app-empty-state__icon {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1.5rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(25, 118, 210, 0.12);
+  color: var(--app-primary);
+  font-size: 2rem;
+}
+
+.app-empty-state__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--app-text-color);
+}
+
+.app-empty-state__message {
+  max-width: 460px;
+  margin: 0.75rem auto 0;
+  line-height: 1.6;
+  color: var(--app-text-muted);
+}
+
+.app-empty-state__action {
+  margin-top: 1.5rem;
+}

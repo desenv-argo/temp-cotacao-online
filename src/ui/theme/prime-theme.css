@@ -1,0 +1,31 @@
+@import 'primeicons/primeicons.css';
+@import 'primereact/resources/primereact.min.css';
+@import 'primereact/resources/themes/lara-light-blue/theme.css';
+
+:root {
+  --app-font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --app-surface-page: #f5faff;
+  --app-surface-card: #ffffff;
+  --app-text-color: #1f2937;
+  --app-text-muted: #6b7280;
+  --app-primary: #1976d2;
+  --app-primary-hover: #1565c0;
+  --app-border-radius: 12px;
+  --app-border-radius-lg: 16px;
+  --app-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.08);
+  --app-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: var(--app-font-family);
+  background: var(--app-surface-page);
+  color: var(--app-text-color);
+}
+
+.p-component {
+  font-family: var(--app-font-family);
+}
